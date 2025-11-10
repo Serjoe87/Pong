@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dj4l8tli88mys"]
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="TitleScreen" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="WinnerTitle" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="TimerScore" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Timer" type="Timer" parent="TimerScore"]
+
+[node name="StartButton" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
