@@ -6,7 +6,7 @@ signal ScorePlayer1
 signal ScorePlayer2
 
 var velocity = Vector2.ZERO
-var speed = 1000
+var speed = 500
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	velocity.x = randf()
@@ -23,6 +23,7 @@ func _on_body_entered(body):
 		velocity.y = velocity.y * -1
 	elif body.is_in_group("PaddleCollision"):
 		velocity.x = velocity.x * -1
+		speed += 100
 	elif body.is_in_group("ScorePlayer1"):
 		ScorePlayer1.emit()
 		position.x = 512
