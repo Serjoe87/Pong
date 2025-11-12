@@ -1,15 +1,19 @@
-extends RigidBody2D
+extends Area2D
 
-signal game_over
+	#if Input.is_action_pressed("Action"):
 
+var velocity = Vector2.ZERO
+var speed = 500
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	velocity.x = randf()
+	velocity.y = randf()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	velocity = velocity.normalized() * speed
+	position += velocity * delta
 
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	game_over.emit()
-	queue_free()
+func _on_body_entered(_body):
+	print("treffer")
+	velocity.y = velocity.y * -1

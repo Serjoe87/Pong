@@ -1,20 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://b821myv7hqira"]
+[gd_scene load_steps=7 format=3 uid="uid://b821myv7hqira"]
 
 [ext_resource type="Script" uid="uid://diak504hkmkmd" path="res://main.gd" id="1_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://dkb3j7vpupkl4" path="res://level.tscn" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://d4j7xe1qi3tfu" path="res://paddle.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://de78u6sepvyir" path="res://ball.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dj4l8tli88mys" path="res://hud.tscn" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dkb3j7vpupkl4" path="res://level.tscn" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://enax4mp7akgn" path="res://paddle.gd" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://de78u6sepvyir" path="res://ball.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1bvp3")
 
-[node name="Level" parent="." instance=ExtResource("1_h2yge")]
+[node name="Hud" parent="." instance=ExtResource("2_lquwl")]
+
+[node name="Level" parent="." instance=ExtResource("3_lquwl")]
 
 [node name="Paddle1" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(66, 200)
+script = ExtResource("5_7mycd")
 
 [node name="Paddle2" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(949, 235)
 
-[node name="Ball" parent="." instance=ExtResource("2_0xm2m")]
-position = Vector2(493, 240)
+[node name="Button" type="Button" parent="."]
+offset_left = 59.0
+offset_top = 52.0
+offset_right = 344.0
+offset_bottom = 111.0
+text = "Direction"
+
+[node name="Ball" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(357, 426)
+
+[connection signal="body_entered" from="Ball" to="Ball" method="_on_body_entered"]
