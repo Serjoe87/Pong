@@ -15,5 +15,9 @@ offset_bottom = 20.0
 position = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_41u45")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_41u45")
+
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(11, 10)

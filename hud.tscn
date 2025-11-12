@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://dj4l8tli88mys"]
 
 [sub_resource type="SystemFont" id="SystemFont_64ctp"]
+subpixel_positioning = 0
 
 [node name="Hud" type="CanvasLayer"]
 

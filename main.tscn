@@ -1,29 +1,31 @@
 [gd_scene load_steps=8 format=3 uid="uid://b821myv7hqira"]
 
-[ext_resource type="Script" uid="uid://diak504hkmkmd" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://d4j7xe1qi3tfu" path="res://paddle.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dj4l8tli88mys" path="res://hud.tscn" id="2_lquwl"]
+[ext_resource type="Script" uid="uid://yj60lhxl0mwb" path="res://hud.gd" id="3_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dkb3j7vpupkl4" path="res://level.tscn" id="3_lquwl"]
 [ext_resource type="Script" uid="uid://enax4mp7akgn" path="res://paddle1.gd" id="5_7mycd"]
 [ext_resource type="PackedScene" uid="uid://de78u6sepvyir" path="res://ball.tscn" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://bpatp27hhvph8" path="res://paddle2.gd" id="6_272bh"]
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_1bvp3")
 
 [node name="Hud" parent="." instance=ExtResource("2_lquwl")]
+script = ExtResource("3_5vw27")
 
-[node name="Level" parent="." instance=ExtResource("3_lquwl")]
+[node name="Level" parent="." groups=["LevelCollision"] instance=ExtResource("3_lquwl")]
 
-[node name="Paddle1" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Paddle1" parent="." groups=["PaddleCollision"] instance=ExtResource("1_ig7tw")]
 position = Vector2(66, 200)
 script = ExtResource("5_7mycd")
 
-[node name="Paddle2" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Paddle2" parent="." groups=["PaddleCollision"] instance=ExtResource("1_ig7tw")]
 position = Vector2(949, 235)
 script = ExtResource("6_272bh")
 
-[node name="Ball" parent="." instance=ExtResource("5_lquwl")]
+[node name="Ball" parent="." groups=["LevelCollision", "PaddleCollision", "ScorePlayer1", "ScorePlayer2"] instance=ExtResource("5_lquwl")]
 position = Vector2(357, 426)
 
+[connection signal="ScorePlayer1" from="Ball" to="Hud" method="_on_ball_score_player_1"]
+[connection signal="ScorePlayer2" from="Ball" to="Hud" method="_on_ball_score_player_2"]
 [connection signal="body_entered" from="Ball" to="Ball" method="_on_body_entered"]

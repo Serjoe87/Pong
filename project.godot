@@ -20,6 +20,13 @@ config/icon="uid://bl5vsrixs8ask"
 window/size/viewport_width=1024
 window/size/viewport_height=768
 
+[global_group]
+
+PaddleCollision="Check for collision with a paddle"
+LevelCollision="Check for collision with a level"
+ScorePlayer1="Area for Player 1 scoring"
+ScorePlayer2="Area for Player 2 scoring"
+
 [input]
 
 Action={

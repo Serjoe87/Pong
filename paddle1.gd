@@ -12,3 +12,4 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = velocity.normalized() * speed
 	position += velocity * delta
+	position = position.clamp(Vector2.ZERO, get_viewport_rect().size)

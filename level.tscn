@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkb3j7vpupkl4"]
+[gd_scene load_steps=5 format=3 uid="uid://dkb3j7vpupkl4"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_5xgho"]
 b = Vector2(1024, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_u52ul"]
 b = Vector2(1024, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vonw3"]
+b = Vector2(0, 768)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_oi3di"]
+b = Vector2(0, 768)
 
 [node name="Level" type="Node2D"]
 
@@ -16,15 +22,28 @@ color = Color(0, 0, 0, 1)
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(544, 0, 544, 768)
 
-[node name="Area2D" type="RigidBody2D" parent="."]
+[node name="Area2D" type="RigidBody2D" parent="." groups=["LevelCollision"]]
 position = Vector2(0, 768)
 gravity_scale = 0.0
 
-[node name="BorderBot" type="CollisionShape2D" parent="Area2D"]
+[node name="BorderBot" type="CollisionShape2D" parent="Area2D" groups=["LevelCollision"]]
 shape = SubResource("SegmentShape2D_5xgho")
 
-[node name="Area2D2" type="RigidBody2D" parent="."]
+[node name="Area2D2" type="RigidBody2D" parent="." groups=["LevelCollision"]]
 gravity_scale = 0.0
 
-[node name="BorderTop" type="CollisionShape2D" parent="Area2D2"]
+[node name="BorderTop" type="CollisionShape2D" parent="Area2D2" groups=["LevelCollision"]]
 shape = SubResource("SegmentShape2D_u52ul")
+
+[node name="Area2D3" type="RigidBody2D" parent="." groups=["ScorePlayer2"]]
+gravity_scale = 0.0
+
+[node name="BorderLeft" type="CollisionShape2D" parent="Area2D3" groups=["ScorePlayer2"]]
+shape = SubResource("SegmentShape2D_vonw3")
+
+[node name="Area2D4" type="RigidBody2D" parent="." groups=["ScorePlayer1"]]
+gravity_scale = 0.0
+
+[node name="BorderRight" type="CollisionShape2D" parent="Area2D4" groups=["ScorePlayer1"]]
+position = Vector2(1024, 0)
+shape = SubResource("SegmentShape2D_oi3di")
